@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './page.css';
 import { useChatContext } from '../contexts/chatContext';
 import { getUsers } from '../services/getUsers';
-import User from '../interfaces/User';
 import { get_abbreviation } from '../helpers/helper';
+import { User } from '../interfaces/User';
 
 
 
@@ -124,7 +124,7 @@ const Page = () => {
                   <div
                       className="users-list"
                       key={option.email}
-                      onClick={(e) => handleUserList(option)}
+                      onClick={() => handleUserList(option)}
                   >
                       <div className="frame-2">
                           <div className="frame-3">

@@ -15,7 +15,7 @@ const ChatApp = () => {
     const [ canSend, setCanSend ] = useState(false);
     const [ ws, setWs ] = useState(null);
     const lastMessageRef = useRef<HTMLDivElement | null>(null);
-    const [ currentTime, setCurrentTime ] = useState(new Date());
+    const [ currentTime ] = useState(new Date());
 
 
     useEffect(()=>{

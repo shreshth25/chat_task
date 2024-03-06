@@ -9,7 +9,7 @@ import '../i18n';
 import { useTranslation } from 'react-i18next';
 import { useChatContext } from '../contexts/chatContext';
 
-const Button = ({ data }: any) => {
+const Button = ({ data }) => {
     const { view, setUserDetails } = useChatContext();
     const { t } = useTranslation();
     const [ showModal, setShowModal ] = useState(false);

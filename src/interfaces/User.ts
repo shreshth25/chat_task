@@ -1,4 +1,4 @@
-export default interface User {
+export type User = {
     email: string;
     id: number;
     account_id: number;
@@ -6,7 +6,6 @@ export default interface User {
     last_name: string;
     status: string;
     respondent_role_id: number;
-    is_visible_rp: any;
-}
-
+    is_visible_rp: null;
+};
 

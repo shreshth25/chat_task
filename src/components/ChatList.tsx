@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './chatList.css';
-import User from '../interfaces/User';
+import { User } from '../interfaces/User';
 import { getUsers } from '../services/getUsers';
 import { get_abbreviation } from '../helpers/helper';
 import { useChatContext } from '../contexts/chatContext';

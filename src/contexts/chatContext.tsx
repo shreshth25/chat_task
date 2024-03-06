@@ -20,7 +20,7 @@ export const ChatContextProvider = ({ children }: WithChildProps)=>{
         firstMessage,
         setFirstMessage,
         userDetails,
-        setUserDetails
+        setUserDetails,
     };
     
     return <chatContext.Provider value={values}>{children}</chatContext.Provider> ;
