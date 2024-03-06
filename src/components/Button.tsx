@@ -9,12 +9,16 @@ import '../i18n';
 import { useTranslation } from 'react-i18next';
 import { useChatContext } from '../contexts/chatContext';
 
-
-const Button = () => {
-    const { view } = useChatContext();
+const Button = ({ data }: any) => {
+    const { view, setUserDetails } = useChatContext();
     const { t } = useTranslation();
     const [ showModal, setShowModal ] = useState(false);
     const closeModal = () => setShowModal(false);
+    
+    const handleClick = () => {
+        setShowModal(prev => !prev);
+        setUserDetails(data); 
+    };
 
     const getViewComponent = () => {
         switch (view) {
@@ -29,12 +33,12 @@ const Button = () => {
         }
     };
 
-  
+
     return (
         <div>
             <button
                 className="task-button"
-                onClick={() => setShowModal((prev) => !prev)}
+                onClick={handleClick}
             >
                 <img src={icon} className="task-button-img" alt="icon" />
                 {t('tasks')}

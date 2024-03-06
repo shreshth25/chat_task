@@ -10,6 +10,7 @@ export const ChatContextProvider = ({ children }: WithChildProps)=>{
     const [ user, setUser ] = useState('');
     const [ view, setView ] = useState('page');
     const [ firstMessage, setFirstMessage ] = useState('');
+    const [ userDetails, setUserDetails ] = useState({});
 
     const values = {
         user,
@@ -18,6 +19,8 @@ export const ChatContextProvider = ({ children }: WithChildProps)=>{
         setView,
         firstMessage,
         setFirstMessage,
+        userDetails,
+        setUserDetails
     };
     
     return <chatContext.Provider value={values}>{children}</chatContext.Provider> ;

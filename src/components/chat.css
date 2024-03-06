@@ -524,6 +524,7 @@
     line-height: 15.733px;
     text-align: left;
     z-index: 32;
+    white-space: pre-wrap;
   }
   .frame-e {
     display: flex;
@@ -1011,7 +1012,7 @@
     flex-shrink: 0;
     gap: 4px;
     position: relative;
-    width: 140px;
+    width: 130px;
     padding: 4px 4px 4px 8px;
     cursor: pointer;
     background: #ecf0f6;

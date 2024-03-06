@@ -13,12 +13,12 @@ const Page = () => {
     const [ inputText, setInputText ] = useState('');
     const [ canSend, setCanSend ] = useState(false);
     const [ users, setUsers ] = useState<User[] | null>(null);
-    const { setUser, setView, setFirstMessage } = useChatContext();
+    const { setUser, setView, setFirstMessage, userDetails } = useChatContext();
     
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await getUsers();
+                const response = await getUsers(userDetails);
                 setUsers(response);
             } catch (error) {
                 console.error('Error fetching users:', error);
@@ -171,6 +171,11 @@ const Page = () => {
                                     setCanSend(selectedUser !== null && e.target.value.trim() !== ''); 
                                 }
                                 }
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        handleSendClick();
+                                    }
+                                }}
                             />
                         </span>
                         <button

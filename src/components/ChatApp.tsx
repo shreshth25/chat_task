@@ -15,6 +15,8 @@ const ChatApp = () => {
     const [ canSend, setCanSend ] = useState(false);
     const [ ws, setWs ] = useState(null);
     const lastMessageRef = useRef<HTMLDivElement | null>(null);
+    const [ currentTime, setCurrentTime ] = useState(new Date());
+
 
     useEffect(()=>{
         const newWs = new WebSocket('ws://localhost:8000/chat/ws');
@@ -44,18 +46,25 @@ const ChatApp = () => {
     };
 
     const handleFirstMessage = (ws)=>{
-        const new_messages = [ ...messages, [ firstMessage ] ];
-        setMessages(new_messages);
-        const messagesToBeSend = new_messages;
-        const dataToBeSend = getMessage(inputText, messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
-        ws.send(JSON.stringify(dataToBeSend));
+        if (firstMessage) {
+            const new_messages = [ ...messages, [ firstMessage ] ];
+            setMessages(new_messages);
+            const messagesToBeSend = new_messages;
+            const dataToBeSend = getMessage(inputText, messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
+            ws.send(JSON.stringify(dataToBeSend));
 
-        ws.onmessage = (e)=>{
-            const responseData = JSON.parse(e.data);
-            setMessages(responseData['chat_history']);
-            setTaskDescriptionTxt(responseData['task_description_txt']);
-            setTipDescriptionTxt(responseData['tip_description_txt']);
-        };
+            ws.onmessage = (e)=>{
+                const responseData = JSON.parse(e.data);
+                setMessages(responseData['chat_history']);
+                setTaskDescriptionTxt(responseData['task_description_txt']);
+                setTipDescriptionTxt(responseData['tip_description_txt']);
+            };
+        }
+        else
+        {
+            setView('page');
+        }
+        
     };
 
     const handleSendClick = () => {
@@ -120,7 +129,7 @@ const ChatApp = () => {
             </div>
             <div className="message-thread-new">
                 <div className="label-b">
-                    <span className="task-assign">10:05 AM</span>
+                    <span className="task-assign">{currentTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
                 </div>
                 {messages.map((chat, index) => {
                     return (
@@ -128,7 +137,7 @@ const ChatApp = () => {
                             {chat[0]!='' && <div className="message-row-d" >
                                 <div className="message-bubble-d">
                                     <button className="button-frame">
-                                        <span className="sed-ut-perspiciatis">{chat[0]}</span>
+                                        <p className="sed-ut-perspiciatis">{chat[0]}</p>
                                     </button>
                                     <div className="frame-e1">
                                         <div className="frame-f2">
@@ -144,7 +153,7 @@ const ChatApp = () => {
                             {chat[1]!='' &&  <div className="message-row-c" ref={index === messages.length - 1 ? lastMessageRef : null}>
                                 <div className="message-bubble-d1">
                                     <button className="button-frame">
-                                        <span className="sed-ut-perspiciatis">{chat[1]}</span>
+                                        <p className="sed-ut-perspiciatis">{chat[1]}</p>
                                     </button>
                                     <div className="frame-e1">
                                         <div className="frame-f2">
@@ -162,10 +171,10 @@ const ChatApp = () => {
             </div>
             <div className="user">
                 {tipDescriptionTxt!='...' && <div className="input-group">
-                    <span>Task you want to assign: </span>
+                    <span className="assigning-task-for">Task you want to assign: </span>
                     <div className="chat-input-5">
                         <span className="task-title-text">
-                            {tipDescriptionTxt}
+                            {firstMessage}
                         </span>
                         <button className="frame-start" onClick={handleClearSelection}>
                             <span className="clear">
@@ -185,8 +194,12 @@ const ChatApp = () => {
                                 onChange={(e) => {
                                     setInputText(e.target.value);
                                     setCanSend(selectedUser !== null && e.target.value.trim() !== '');
-                                }
-                                }
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        handleSendClick();
+                                    }
+                                }}
                             />
                         </span>
                         <button

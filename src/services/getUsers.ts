@@ -1,7 +1,7 @@
-export const getUsers = async () => {
-
+export const getUsers = async (user) => {
+    console.log(user);
     try {
-        const res = await fetch('https://dev-api.attuned.ai/v2/accounts/1036/teams/100876/members', {
+        const res = await fetch(`https://dev-api.attuned.ai/v2/accounts/${user['account_id']}/teams/${user['team_id']}/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

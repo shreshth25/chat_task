@@ -5,7 +5,7 @@ import { ChatContextProvider } from './contexts/chatContext';
 const App = ({ data }: any) => {
     return (
         <ChatContextProvider>
-            <Button/>
+            <Button data= {data}/>
         </ChatContextProvider>
     );
 };
