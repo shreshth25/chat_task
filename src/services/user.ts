@@ -13,9 +13,40 @@ export const getUsers = async (user) => {
             throw new Error('Failed to fetch users');
         }
         const r = await res.json();
-        return r;
+
+        const users = r.map(transformUser);
+
+        return users;
+
     } catch (error) {
         console.log('Something went wrong here while fetching the users');
         console.log(error);
     }
 };
+
+
+
+function transformUser(user) {
+    const { 
+        email: email,
+        id: id,
+        account_id: accountId, 
+        first_name: firstName,
+        last_name: lastName,
+        status: status,
+        respondent_role_id: respondentRoleId, 
+        is_visible_rp: isVisibleRp, 
+    } = user;
+
+    return {
+        email,
+        id,
+        accountId,
+        firstName,
+        lastName,
+        status,
+        respondentRoleId,
+        isVisibleRp,
+    };
+}
+

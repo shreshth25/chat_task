@@ -49,11 +49,11 @@ const ChatList = () => {
                                     <div className='frame-5'>
                                         <div className='avatar'>
                                             <div className='avatars-img'>
-                                                <span className='rb'>{getAbbreviation(user.first_name, user.last_name)}</span>
+                                                <span className='rb'>{getAbbreviation(user.firstName, user.lastName)}</span>
                                             </div>
                                         </div>
                                         <div className='frame-6'>
-                                            <span className='robert-bagares'>{user.first_name}</span>
+                                            <span className='robert-bagares'>{user.firstName}</span>
                                             <div className='frame-7'>
                                                 <div className='frame-8'>
                                                     <div className='motivator-icon' />

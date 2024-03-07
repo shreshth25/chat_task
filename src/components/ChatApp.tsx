@@ -22,7 +22,6 @@ const ChatApp = () => {
         const newWs = new WebSocket('ws://localhost:8000/chat/ws');
         setWs(newWs);
         newWs.onopen = ()=>{
-            console.log('Connected');
             handleFirstMessage(newWs);
         };
 
@@ -124,11 +123,11 @@ const ChatApp = () => {
                     <div className="frame-3">
                         <div className="avatar">
                             <div className="avatars-img">
-                                <span className="rb">{getAbbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
+                                <span className="rb">{getAbbreviation(selectedUser.firstName, selectedUser.lastName)}</span>
                             </div>
                         </div>
                         <div className="frame-4">
-                            <span className="robert-bagares">{selectedUser.first_name}</span>
+                            <span className="robert-bagares">{selectedUser.firstName}</span>
                             <div className="frame-5">
                                 <div className="frame-6">
                                     <div className="motivator-icon" />

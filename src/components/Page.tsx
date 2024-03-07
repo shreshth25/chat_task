@@ -57,7 +57,7 @@ const Page = () => {
     };
 
     const filteredList = users ? users.filter((user) =>
-        user.first_name.toLowerCase().includes(inputValue.toLowerCase()),
+        user.firstName.toLowerCase().includes(inputValue.toLowerCase()),
     ) : [];
 
 
@@ -80,11 +80,11 @@ const Page = () => {
                         <div className="frame-3">
                             <div className="avatar">
                                 <div className="avatars-img">
-                                    <span className="rb">{getAbbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
+                                    <span className="rb">{getAbbreviation(selectedUser.firstName, selectedUser.lastName)}</span>
                                 </div>
                             </div>
                             <div className="frame-4">
-                                <span className="robert-bagares">{selectedUser.first_name}</span>
+                                <span className="robert-bagares">{selectedUser.firstName}</span>
                                 <div className="frame-5">
                                     <div className="frame-6">
                                         <div className="motivator-icon" />
@@ -130,11 +130,11 @@ const Page = () => {
                           <div className="frame-3">
                               <div className="avatar">
                                   <div className="avatars-img">
-                                      <span className="rb">{getAbbreviation(option.first_name, option.last_name)}</span>
+                                      <span className="rb">{getAbbreviation(option.firstName, option.lastName)}</span>
                                   </div>
                               </div>
                               <div className="frame-4">
-                                  <span className="robert-bagares">{option.first_name}</span>
+                                  <span className="robert-bagares">{option.firstName}</span>
                                   <div className="frame-5">
                                       <div className="frame-6">
                                           <div className="motivator-icon" />
