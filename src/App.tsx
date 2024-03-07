@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './components/Button';
-import { ChatContextProvider } from './contexts/chatContext';
+import { ChatContextProvider } from './contexts/chat';
 
 const App = ({ data }: any) => {
     return (

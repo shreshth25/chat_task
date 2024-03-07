@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './page.css';
-import { useChatContext } from '../contexts/chatContext';
-import { getUsers } from '../services/getUsers';
-import { get_abbreviation } from '../helpers/helper';
-import { User } from '../interfaces/User';
+import '../assets/css/page.css';
+import { useChatContext } from '../contexts/chat';
+import { getUsers } from '../services/user';
+import { getAbbreviation } from '../helpers/helper';
+import { User } from '../interfaces/user';
 
 
 
@@ -80,7 +80,7 @@ const Page = () => {
                         <div className="frame-3">
                             <div className="avatar">
                                 <div className="avatars-img">
-                                    <span className="rb">{get_abbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
+                                    <span className="rb">{getAbbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
                                 </div>
                             </div>
                             <div className="frame-4">
@@ -130,7 +130,7 @@ const Page = () => {
                           <div className="frame-3">
                               <div className="avatar">
                                   <div className="avatars-img">
-                                      <span className="rb">{get_abbreviation(option.first_name, option.last_name)}</span>
+                                      <span className="rb">{getAbbreviation(option.first_name, option.last_name)}</span>
                                   </div>
                               </div>
                               <div className="frame-4">

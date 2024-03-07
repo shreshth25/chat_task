@@ -1,10 +1,10 @@
 import React from 'react';
-import './popup.css';
+import '../assets/css/popup.css';
 const Popup = ({ closeModal, content }) => {
     return (
         <div>
-            <div className="modal-wrapper" onClick={closeModal}></div>
-            <div className="modal-container">{content}</div>
+            <div className="modal-wrapper" onClick={ closeModal }></div>
+            <div className="modal-container">{ content }</div>
         </div>
     );
 };

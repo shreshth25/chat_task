@@ -1,7 +1,7 @@
-export const get_abbreviation = (first_name: string, last_name: string)=>{
-    if(first_name && last_name) return first_name[0] + last_name[0];
-    else if (first_name) return first_name[0];
-    else if (last_name) return last_name[0];
+export const getAbbreviation = (firstName: string, lastName: string)=>{
+    if(firstName && lastName) return firstName[0] + lastName[0];
+    else if (firstName) return firstName[0];
+    else if (lastName) return lastName[0];
     else return '';
 };  
 

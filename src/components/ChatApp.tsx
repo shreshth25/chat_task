@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './chat.css';
-import { useChatContext } from '../contexts/chatContext';
-import { getMessage, get_abbreviation } from '../helpers/helper';
+import '../assets/css/chat.css';
+import { useChatContext } from '../contexts/chat';
+import { getMessage, getAbbreviation } from '../helpers/helper';
 
 
 const ChatApp = () => {
@@ -47,9 +47,9 @@ const ChatApp = () => {
 
     const handleFirstMessage = (ws)=>{
         if (firstMessage) {
-            const new_messages = [ ...messages, [ firstMessage ] ];
-            setMessages(new_messages);
-            const messagesToBeSend = new_messages;
+            const newMessages = [ ...messages, [ firstMessage ] ];
+            setMessages(newMessages);
+            const messagesToBeSend = newMessages;
             const dataToBeSend = getMessage(inputText, messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
             ws.send(JSON.stringify(dataToBeSend));
 
@@ -74,10 +74,10 @@ const ChatApp = () => {
 
     const handleSendClick = () => {
         if (selectedUser !== null && inputText.trim() !== '') {
-            const new_messages = [ ...messages, [ inputText ] ];
+            const newMessages = [ ...messages, [ inputText ] ];
             setInputText('');
-            setMessages(new_messages);
-            const messagesToBeSend = new_messages;
+            setMessages(newMessages);
+            const messagesToBeSend = newMessages;
             const dataToBeSend = getMessage(inputText, messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
             ws.send(JSON.stringify(dataToBeSend));
 
@@ -91,10 +91,10 @@ const ChatApp = () => {
     };
 
     const handleYes = () => {
-        const new_messages = [ ...messages, [ 'Yes' ] ];
+        const newMessages = [ ...messages, [ 'Yes' ] ];
         setInputText('');
-        setMessages(new_messages);
-        const messagesToBeSend = new_messages;
+        setMessages(newMessages);
+        const messagesToBeSend = newMessages;
         const dataToBeSend = getMessage('Yes', messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
         ws.send(JSON.stringify(dataToBeSend));
 
@@ -124,7 +124,7 @@ const ChatApp = () => {
                     <div className="frame-3">
                         <div className="avatar">
                             <div className="avatars-img">
-                                <span className="rb">{get_abbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
+                                <span className="rb">{getAbbreviation(selectedUser.first_name, selectedUser.last_name)}</span>
                             </div>
                         </div>
                         <div className="frame-4">

@@ -62,7 +62,7 @@
     position: relative;
     width: 22px;
     height: 22px;
-    background: url(../assets/images/805c7efc-71a0-444a-98c5-3a3bf3843041.png)
+    background: url(../images/805c7efc-71a0-444a-98c5-3a3bf3843041.png)
       no-repeat center;
     background-size: cover;
     z-index: 2;
@@ -96,7 +96,7 @@
     position: relative;
     width: 15px;
     height: 16px;
-    background: url(../assets/images/1671b0cf-efec-4aa2-af60-5b9bc1499d25.png)
+    background: url(../images/1671b0cf-efec-4aa2-af60-5b9bc1499d25.png)
       no-repeat center;
     background-size: cover;
     z-index: 5;
@@ -107,7 +107,7 @@
     position: relative;
     width: 22px;
     height: 22px;
-    background: url(../assets/images/8b1b937c-f350-4f03-902a-3cf914b698cf.png)
+    background: url(../images/8b1b937c-f350-4f03-902a-3cf914b698cf.png)
       no-repeat center;
     background-size: cover;
     z-index: 6;
@@ -162,7 +162,7 @@
     height: 24px;
     top: 0;
     left: 50%;
-    background: url(../assets/images/0166b601-017e-4e7b-8120-a80fa21bf28d.png)
+    background: url(../images/0166b601-017e-4e7b-8120-a80fa21bf28d.png)
       no-repeat center;
     background-size: cover;
     transform: translate(-50%, 0);
@@ -353,7 +353,7 @@
     position: relative;
     width: 22px;
     height: 22px;
-    background: url(../assets/images/08231e55-aa4c-45b7-91b1-12ed44b9eb64.png)
+    background: url(../images/08231e55-aa4c-45b7-91b1-12ed44b9eb64.png)
       no-repeat center;
     background-size: cover;
     z-index: 20;
@@ -365,7 +365,7 @@
     position: relative;
     width: 22px;
     height: 22px;
-    background: url(../assets/images/08231e55-aa4c-45b7-91b1-12ed44b9eb64.png)
+    background: url(../images/08231e55-aa4c-45b7-91b1-12ed44b9eb64.png)
       no-repeat center;
     background-size: cover;
     z-index: 20;
@@ -508,7 +508,7 @@
   position: relative;
   width: 22px;
   height: 22px;
-  background: url(../assets/images/729c9f7d-cf37-4782-b962-cad463b6b7fa.png)
+  background: url(../images/729c9f7d-cf37-4782-b962-cad463b6b7fa.png)
     no-repeat center;
   background-size: cover;
   z-index: 18;
@@ -518,7 +518,7 @@
   position: relative;
   width: 22px;
   height: 22px;
-  background: url(../assets/images/e9377cfb-c771-41d3-b4a6-db94fd3df2c6.png)
+  background: url(../images/e9377cfb-c771-41d3-b4a6-db94fd3df2c6.png)
     no-repeat center;
   background-size: cover;
   z-index: 19;
@@ -528,7 +528,7 @@
   position: relative;
   width: 22px;
   height: 22px;
-  background: url(../assets/images/87d87583-953f-405f-a960-7f8c65964792.png)
+  background: url(../images/87d87583-953f-405f-a960-7f8c65964792.png)
     no-repeat center;
   background-size: cover;
   z-index: 20;

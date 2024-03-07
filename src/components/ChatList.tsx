@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import './chatList.css';
-import { User } from '../interfaces/User';
-import { getUsers } from '../services/getUsers';
-import { get_abbreviation } from '../helpers/helper';
-import { useChatContext } from '../contexts/chatContext';
+import '../assets/css/chatList.css';
+import { User } from '../interfaces/user';
+import { getUsers } from '../services/user';
+import { getAbbreviation } from '../helpers/helper';
+import { useChatContext } from '../contexts/chat';
 
 const ChatList = () => {
 
@@ -49,7 +49,7 @@ const ChatList = () => {
                                     <div className='frame-5'>
                                         <div className='avatar'>
                                             <div className='avatars-img'>
-                                                <span className='rb'>{get_abbreviation(user.first_name, user.last_name)}</span>
+                                                <span className='rb'>{getAbbreviation(user.first_name, user.last_name)}</span>
                                             </div>
                                         </div>
                                         <div className='frame-6'>

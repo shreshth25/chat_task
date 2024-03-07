@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import icon from '../assets/images/805c7efc-71a0-444a-98c5-3a3bf3843041.png';
-import './button.css';
+import '../assets/css/button.css';
 import Popup from './Popup';
 import Page from './Page';
 import ChatList from './ChatList';
 import ChatApp from './ChatApp';
 import '../i18n';
 import { useTranslation } from 'react-i18next';
-import { useChatContext } from '../contexts/chatContext';
+import { useChatContext } from '../contexts/chat';
 
 const Button = ({ data }) => {
     const { view, setUserDetails } = useChatContext();
