@@ -67,11 +67,15 @@ const ChatApp = () => {
         
     };
 
+
+    const handleCopyMessage = (message: string) => {
+        navigator.clipboard.writeText(message);
+    };
+
     const handleSendClick = () => {
         if (selectedUser !== null && inputText.trim() !== '') {
             const new_messages = [ ...messages, [ inputText ] ];
             setInputText('');
-            setCanSend(false);
             setMessages(new_messages);
             const messagesToBeSend = new_messages;
             const dataToBeSend = getMessage(inputText, messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
@@ -83,8 +87,23 @@ const ChatApp = () => {
                 setTaskDescriptionTxt(responseData['task_description_txt']);
                 setTipDescriptionTxt(responseData['tip_description_txt']);
             };
-            setCanSend(true);
         }
+    };
+
+    const handleYes = () => {
+        const new_messages = [ ...messages, [ 'Yes' ] ];
+        setInputText('');
+        setMessages(new_messages);
+        const messagesToBeSend = new_messages;
+        const dataToBeSend = getMessage('Yes', messagesToBeSend, taskDescriptionTxt, tipDescriptionTxt);
+        ws.send(JSON.stringify(dataToBeSend));
+
+        ws.onmessage = (e)=>{
+            const responseData = JSON.parse(e.data);
+            setMessages(responseData['chat_history']);
+            setTaskDescriptionTxt(responseData['task_description_txt']);
+            setTipDescriptionTxt(responseData['tip_description_txt']);
+        };
     };
 
     return (
@@ -135,9 +154,11 @@ const ChatApp = () => {
                     return (
                         <div key={index} className='message-thread-new-inner'>
                             {chat[0]!='' && <div className="message-row-d" >
-                                <div className="message-bubble-d">
+                                <div className="message-bubble-d1">
                                     <button className="button-frame">
-                                        <p className="sed-ut-perspiciatis">{chat[0]}</p>
+                                        <span className="sed-ut-perspiciatis">
+                                            {chat[0]}
+                                        </span>
                                     </button>
                                     <div className="frame-e1">
                                         <div className="frame-f2">
@@ -151,16 +172,23 @@ const ChatApp = () => {
                             }
 
                             {chat[1]!='' &&  <div className="message-row-c" ref={index === messages.length - 1 ? lastMessageRef : null}>
-                                <div className="message-bubble-d1">
-                                    <button className="button-frame">
-                                        <p className="sed-ut-perspiciatis">{chat[1]}</p>
+                                <div className='message-bubble-d'>
+                                    <button className='button-frame'>
+                                        <span className='sed-ut-perspiciatis'>
+                                            {chat[1]}
+                                        </span>
                                     </button>
-                                    <div className="frame-e1">
-                                        <div className="frame-f2">
-                                            <div className="frame-10">
-                                                <div className="vector2" />
+                                    <div className='frame-e'>
+                                        <div className='frame-f'>
+                                            <div className='frame-10'>
+                                                <div className='vector' />
                                             </div>
                                         </div>
+                                        {index === messages.length - 1 && tipDescriptionTxt !== '...' && <div className='bubble-function'>
+                                            <button className='frame-button' onClick={() => handleCopyMessage(chat[1])}>
+                                                <div className='copy'>📄</div>
+                                            </button>
+                                        </div>}
                                     </div>
                                 </div>
                             </div>}
@@ -170,20 +198,28 @@ const ChatApp = () => {
                 })}
             </div>
             <div className="user">
-                {tipDescriptionTxt!='...' && <div className="input-group">
-                    <span className="assigning-task-for">Task you want to assign: </span>
-                    <div className="chat-input-5">
-                        <span className="task-title-text">
+                {tipDescriptionTxt!='...' && <div className='task-assign-lookup'>
+                    <div className='label-12'>
+                        <span className='task-assign-text'>Task you want to assign:</span>
+                    </div>
+                    <div className='text-block'>
+                        <span className='lorem-ipsum-text'>
                             {firstMessage}
                         </span>
-                        <button className="frame-start" onClick={handleClearSelection}>
-                            <span className="clear">
-                                Start New Task
-                            </span>
-                            <div className="icons-a" />
+                        <button className='frame-button-13' onClick={handleClearSelection}>
+                            <span className='start-new-task'>Start New Task</span>
+                            <div className='icons-14' />
                         </button>
                     </div>
                 </div>}
+
+                { tipDescriptionTxt=='...'&& <button
+                    className='yes-button'
+                    onClick={handleYes}
+                >
+                    <span className='send'>Yes</span>
+                </button> 
+                }
                 <div className="input-group">
                     <div className="chat-input-4">
                         <span className="task-title">
