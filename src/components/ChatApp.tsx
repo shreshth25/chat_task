@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import '../assets/css/chat.css';
 import { useChatContext } from '../contexts/chat';
 import { getMessage, getAbbreviation } from '../helpers/helper';
-
+import '../i18n';
+import { useTranslation } from 'react-i18next';
 
 const ChatApp = () => {
 
@@ -16,6 +17,7 @@ const ChatApp = () => {
     const [ ws, setWs ] = useState(null);
     const lastMessageRef = useRef<HTMLDivElement | null>(null);
     const [ currentTime ] = useState(new Date());
+    const { t } = useTranslation();
 
 
     useEffect(()=>{
@@ -111,7 +113,7 @@ const ChatApp = () => {
                 <div className="frame-1">
                     <div className="ri-sparkling-fill" />
                     <div className="label">
-                        <span className="task-assignment">New Task Assignment</span>
+                        <span className="task-assignment">{t('new task assignment')}</span>
                     </div>
                     <div className="ep-info-filled" />
                 </div>
@@ -119,7 +121,7 @@ const ChatApp = () => {
             </div>
             <div className="chat-input">
                 <div className="frame-2">
-                    <span className="assigning-task-for">Assigning task for:</span>
+                    <span className="assigning-task-for">{t('assigning task for')}:</span>
                     <div className="frame-3">
                         <div className="avatar">
                             <div className="avatars-img">
@@ -140,7 +142,7 @@ const ChatApp = () => {
                 </div>
                 <button className="frame-9" onClick={handleClearSelection}>
                     <span className="clear">
-                        Clear
+                        {t('clear')}
                     </span>
                     <div className="icons-a" />
                 </button>
@@ -199,14 +201,14 @@ const ChatApp = () => {
             <div className="user">
                 {tipDescriptionTxt!='...' && <div className='task-assign-lookup'>
                     <div className='label-12'>
-                        <span className='task-assign-text'>Task you want to assign:</span>
+                        <span className='task-assign-text'>{t('task you want to assign')}:</span>
                     </div>
                     <div className='text-block'>
                         <span className='lorem-ipsum-text'>
                             {firstMessage}
                         </span>
                         <button className='frame-button-13' onClick={handleClearSelection}>
-                            <span className='start-new-task'>Start New Task</span>
+                            <span className='start-new-task'>{t('start new task')}</span>
                             <div className='icons-14' />
                         </button>
                     </div>
@@ -216,7 +218,7 @@ const ChatApp = () => {
                     className='yes-button'
                     onClick={handleYes}
                 >
-                    <span className='send'>Yes</span>
+                    <span className='send'>{t('yes')}</span>
                 </button> 
                 }
                 <div className="input-group">
@@ -224,7 +226,7 @@ const ChatApp = () => {
                         <span className="task-title">
                             <input
                                 style={{ border: 'None', width: '100%' }}
-                                placeholder="What task do you want to accomplish?"
+                                placeholder={t('what task do you want to accomplish?')}
                                 value={inputText}
                                 onChange={(e) => {
                                     setInputText(e.target.value);
@@ -242,7 +244,7 @@ const ChatApp = () => {
                             onClick={handleSendClick}
                             disabled={!canSend}
                         >
-                            <span className={canSend ? 'can-send' : 'send'}>Send</span>
+                            <span className={canSend ? 'can-send' : 'send'}>{t('send')}</span>
                             <div className={canSend ? 'icons-5-send' : 'icons-5'} />
                         </button>
                     </div>

@@ -4,11 +4,14 @@ import { User } from '../interfaces/user';
 import { getUsers } from '../services/user';
 import { getAbbreviation } from '../helpers/helper';
 import { useChatContext } from '../contexts/chat';
+import '../i18n';
+import { useTranslation } from 'react-i18next';
 
 const ChatList = () => {
 
     const [ users, setUsers ] = useState<User[] | []>([]);
     const { setUser, setView, userDetails } = useChatContext();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -35,7 +38,7 @@ const ChatList = () => {
                         <div className='mdi-chevron-left'/>
                     </div>
                     <div className='label'>
-                        <span className='task-assign'>All Conversations</span>
+                        <span className='task-assign'>{t('all conversations')}</span>
                     </div>
                 </div>
             </div>

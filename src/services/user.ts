@@ -1,6 +1,6 @@
 export const getUsers = async (user) => {
     try {
-        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/accounts/${user['account_id']}/teams/${user['team_id']}/members`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/accounts/${user['accountId']}/teams/${user['teamId']}/members`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

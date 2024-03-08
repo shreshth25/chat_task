@@ -4,7 +4,8 @@ import { useChatContext } from '../contexts/chat';
 import { getUsers } from '../services/user';
 import { getAbbreviation } from '../helpers/helper';
 import { User } from '../interfaces/user';
-
+import '../i18n';
+import { useTranslation } from 'react-i18next';
 
 
 const Page = () => {
@@ -13,6 +14,7 @@ const Page = () => {
     const [ inputText, setInputText ] = useState('');
     const [ canSend, setCanSend ] = useState(false);
     const [ users, setUsers ] = useState<User[] | null>(null);
+    const { t } = useTranslation();
     const { setUser, setView, setFirstMessage, userDetails } = useChatContext();
     
     useEffect(() => {
@@ -67,7 +69,7 @@ const Page = () => {
                 <div className="frame-1">
                     <div className="sparkling-fill" />
                     <div className="label">
-                        <span className="task-assignment">New Task Assignment</span>
+                        <span className="task-assignment">{t('new task assignment')}</span>
                     </div>
                     <div className="ep-info-filled" />
                 </div>
@@ -76,7 +78,7 @@ const Page = () => {
             {selectedUser ? (
                 <div className="chat-input">
                     <div className="frame-2">
-                        <span className="assigning-task-for">Assigning task for:</span>
+                        <span className="assigning-task-for">{t('assigning task for')}:</span>
                         <div className="frame-3">
                             <div className="avatar">
                                 <div className="avatars-img">
@@ -97,7 +99,7 @@ const Page = () => {
                     </div>
                     <button className="frame-9">
                         <span className="clear" onClick={handleClearSelection}>
-              Clear
+                            {t('clear')}
                         </span>
                         <div className="icons-a" />
                     </button>
@@ -112,7 +114,7 @@ const Page = () => {
                             <input
                                 className="search-member-input"
                                 type="text"
-                                placeholder="Search member to assign task"
+                                placeholder={t('search member to assign task')}
                                 value={inputValue}
                                 onChange={handleInputChange}
                             />
@@ -154,7 +156,7 @@ const Page = () => {
             <div className="message-thread">
                 <div className="label-3">
                     <span className="task-description">
-            ✏️ Start by explaining the task you want to assign
+            ✏️ {t('start by explaining the task you want to assign')}
                     </span>
                 </div>
             </div>
@@ -164,7 +166,7 @@ const Page = () => {
                         <span className="task-title">
                             <input
                                 style={{ border: 'None', width: '100%' }}
-                                placeholder="What task do you want to accomplish?"
+                                placeholder={t('what task do you want to accomplish?')}
                                 value={inputText}
                                 onChange={(e)=>{
                                     setInputText(e.target.value);
@@ -183,7 +185,7 @@ const Page = () => {
                             onClick={handleSendClick}
                             disabled={!canSend}
                         >
-                            <span  className={canSend ? 'can-send': 'send'}>Send</span>
+                            <span  className={canSend ? 'can-send': 'send'}>{t('send')}</span>
                             <div className={canSend ? 'icons-5-send': 'icons-5'} />
                         </button>
                     </div>
